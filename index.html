@@ -16,7 +16,8 @@
             var secondNumber = document.getElementById('secondNumber').value;
             var result = parseInt(firstNumber) * secondNumber;
 
-            var regexNum = /^[0-9.,]+$/i;
+            var regexNum = /^[-+]?\d+\.\d+$/; /* n'accepte que les décimaux */
+            /*/^[0-9.,]+$/i; entiers acceptés */
             if (regexNum.test(firstNumber) == false)
             {
                 alert('Premier nombre non valide')
