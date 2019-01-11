@@ -11,13 +11,19 @@
         <div><input type="submit" onclick="multiShow()" name="submit" id="submit" value="valider" /></div>
     </form>
     <script>
-        function multiShow() {
+        function multiShow()
+        {
             var firstNumber = document.getElementById('firstNumber').value;
+            // document.querySelector('#nomDeL'Id');
             var secondNumber = document.getElementById('secondNumber').value;
-            var result = parseInt(firstNumber) * secondNumber;
-
-            var regexNum = /^[-+]?\d+\.\d+$/; /* n'accepte que les décimaux */
-            /*/^[0-9.,]+$/i; entiers acceptés */
+            // Première solution : parseInt(string, base) marche sans la base mais : base obligatoire
+            // var result = parseInt(firstNumber, 10) * secondNumber; en base 10 [0-9]
+            // Deuxième solution : Math.trunc(firstNumber)
+            // var result = Math.trunc(firstNumber) * secondNumber;
+            var regexNum = /^[-+]?\d+\.\d+$/; // n'accepte que les décimaux  
+            // /^[0-9.,]+$/i; entiers acceptés
+            // CORRECTION : /^[0-9].[0-9]+$/ ou /^[0-9]+\.[0-9]+$/
+            
             if (regexNum.test(firstNumber) == false)
             {
                 alert('Premier nombre non valide')
@@ -28,7 +34,7 @@
             }
             else
             {
-                alert(`Le résultat est : ${result} en ne gardant que la partie entière du premier nombre : ${parseInt(firstNumber)}`);
+                alert(`Le résultat est : ${Math.trunc(firstNumber) * secondNumber} en ne gardant que la partie entière du premier nombre : ${Math.trunc(firstNumber)}`);
             }
         }
     </script>
